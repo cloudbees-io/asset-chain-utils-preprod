@@ -1,0 +1,25 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: scan
+description: "Scan using multiple plugins"
+
+inputs:
+  plugin-list:
+    description: "List of plugins to execute"
+    required: false
+    default: 'github-inventory,github-decorator,bitbucket-inventory,bitbucket-decorator,gosec,njsscan,gitleaks,checkov,sonar'
+
+runs:
+  using: composite
+  steps:
+    - name: Initiate execution plan
+      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/assets-plugin-chain-utils:latest
+      id: plan
+      with:
+        entrypoint: assets-plugin-chain-utils
+        args: configure
+      env:
+        INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
+        INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
+        INPUT_RUN_ID: ${{ cloudbees.run_id }}
+        INPUT_PLUGIN_LIST: ${{ inputs.plugin-list }}
