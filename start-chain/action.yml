@@ -3,12 +3,6 @@ kind: action
 name: scan
 description: "Scan using multiple plugins"
 
-inputs:
-  plugin-list:
-    description: "List of plugins to execute"
-    required: true
-    default: ''
-
 outputs:
   #Code Scan related Outputs
   account_credentials:
@@ -46,30 +40,30 @@ outputs:
     description: "Checkov"
   
   #Binary Scan related Outputs
-  # wf_artifact_token:
-  #   value: ${{ steps.plan.outputs.wf_artifact_token}}
-  #   description: "Workflow artifact token"
-  # wf_artifact_component_id:
-  #   value: ${{ steps.plan.outputs.wf_artifact_component_id}}
-  #   description: "Workflow artifact component id"
-  # wfartifact-inventory:
-  #   value: ${{ steps.plan.outputs.wfartifact-inventory}}
-  #   description: "Workflow artifact inventory"
-  # wfartifact-decorator:
-  #   value: ${{ steps.plan.outputs.wfartifact-decorator}}
-  #   description: "Workflow artifact decorator"
-  # trivy:
-  #   value: ${{ steps.plan.outputs.trivy}}
-  #   description: "Trivy"
-  # findsecbugs:
-  #   value: ${{ steps.plan.outputs.findsecbugs}}
-  #   description: "FindSecBugs"
-  # syft:
-  #   value: ${{ steps.plan.outputs.syft}}
-  #   description: "Syft SBOM"
-  # grype:
-  #   value: ${{ steps.plan.outputs.grype}}
-  #   description: "Grype"
+  wf_artifact_token:
+    value: ${{ steps.plan.outputs.wf_artifact_token}}
+    description: "Workflow artifact token"
+  wf_artifact_component_id:
+    value: ${{ steps.plan.outputs.wf_artifact_component_id}}
+    description: "Workflow artifact component id"
+  wfartifact-inventory:
+    value: ${{ steps.plan.outputs.wfartifact-inventory}}
+    description: "Workflow artifact inventory"
+  wfartifact-decorator:
+    value: ${{ steps.plan.outputs.wfartifact-decorator}}
+    description: "Workflow artifact decorator"
+  trivy:
+    value: ${{ steps.plan.outputs.trivy}}
+    description: "Trivy"
+  findsecbugs:
+    value: ${{ steps.plan.outputs.findsecbugs}}
+    description: "FindSecBugs"
+  syft:
+    value: ${{ steps.plan.outputs.syft}}
+    description: "Syft SBOM"
+  grype:
+    value: ${{ steps.plan.outputs.grype}}
+    description: "Grype"
 
 
 runs:
@@ -85,4 +79,4 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_PLUGIN_LIST: ${{ inputs.plugin-list }}
+        INPUT_PLUGIN_LIST: 'github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gosec,njsscan,gitleaks,checkov,sonar,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype'
