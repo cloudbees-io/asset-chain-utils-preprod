@@ -6,8 +6,8 @@ description: "Scan using multiple plugins"
 inputs:
   plugin-list:
     description: "List of plugins to execute"
-    required: false
-    default: 'github-inventory,github-decorator,bitbucket-inventory,bitbucket-decorator,gosec,njsscan,gitleaks,checkov,sonar'
+    required: true
+    default: ''
 
 runs:
   using: composite
