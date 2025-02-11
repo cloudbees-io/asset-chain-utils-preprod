@@ -32,7 +32,7 @@ outputs:
   gosec:
     value: ${{ steps.plan.outputs.gosec}}
     description: "Gosec"
-  njs:
+  njsscan:
     value: ${{ steps.plan.outputs.njsscan}}
     description: "NJS"
   gitleaks:
