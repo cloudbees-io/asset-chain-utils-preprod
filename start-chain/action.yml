@@ -9,6 +9,69 @@ inputs:
     required: true
     default: ''
 
+outputs:
+  #Code Scan related Outputs
+  account_credentials:
+    value: ${{ steps.plan.outputs.account_credentials}}
+    description: "Account credentials"
+  github-inventory:
+    value: ${{ steps.plan.outputs.github-inventory}}
+    description: "Github inventory"
+  github-decorator:
+    value: ${{ steps.plan.outputs.github-decorator}}
+    description: "Github decorator"
+  bitbucket-inventory:
+    value: ${{ steps.plan.outputs.bitbucket-inventory}}
+    description: "Bitbucket inventory"
+  bitbucket-decorator:
+    value: ${{ steps.plan.outputs.bitbucket-decorator}}
+    description: "Bitbucket decorator"
+  scc:
+    value: ${{ steps.plan.outputs.scc}}
+    description: "SCC Scanner"
+  gosec:
+    value: ${{ steps.plan.outputs.gosec}}
+    description: "Gosec"
+  njs:
+    value: ${{ steps.plan.outputs.njsscan}}
+    description: "NJS"
+  gitleaks:
+    value: ${{ steps.plan.outputs.gitleaks}}
+    description: "Gitleaks"
+  sonar-props:
+    value: ${{ steps.plan.outputs.sonar-props}}
+    description: "SonarQube"
+  checkov:
+    value: ${{ steps.plan.outputs.checkov}}
+    description: "Checkov"
+  
+  #Binary Scan related Outputs
+  wf_artifact_token:
+    value: ${{ steps.plan.outputs.wf_artifact_token}}
+    description: "Workflow artifact token"
+  wf_artifact_component_id:
+    value: ${{ steps.plan.outputs.wf_artifact_component_id}}
+    description: "Workflow artifact component id"
+  wfartifact-inventory:
+    value: ${{ steps.plan.outputs.wfartifact-inventory}}
+    description: "Workflow artifact inventory"
+  wfartifact-decorator:
+    value: ${{ steps.plan.outputs.wfartifact-decorator}}
+    description: "Workflow artifact decorator"
+  trivy:
+    value: ${{ steps.plan.outputs.trivy}}
+    description: "Trivy"
+  findsecbugs:
+    value: ${{ steps.plan.outputs.findsecbugs}}
+    description: "FindSecBugs"
+  syft:
+    value: ${{ steps.plan.outputs.syft}}
+    description: "Syft SBOM"
+  grype:
+    value: ${{ steps.plan.outputs.grype}}
+    description: "Grype"
+
+
 runs:
   using: composite
   steps:
