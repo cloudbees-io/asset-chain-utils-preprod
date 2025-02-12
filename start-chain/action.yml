@@ -41,10 +41,10 @@ outputs:
   
   #Binary Scan related Outputs
   wf_artifact_token:
-    value: ${{ steps.set-outputs.outputs.wf_artifact_token}}
+    value: ${{ steps.plan.outputs.wf_artifact_token || '' }}
     description: "Workflow artifact token"
   wf_artifact_component_id:
-    value: ${{ steps.set-outputs.outputs.wf_artifact_component_id}}
+    value: ${{ steps.plan.outputs.wf_artifact_component_id || '' }}
     description: "Workflow artifact component id"
   wfartifact-inventory:
     value: ${{ steps.plan.outputs.wfartifact-inventory}}
