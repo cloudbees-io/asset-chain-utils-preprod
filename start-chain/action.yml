@@ -41,10 +41,10 @@ outputs:
   
   #Binary Scan related Outputs
   wf_artifact_token:
-    value: ${{ steps.plan.outputs.wf_artifact_token || '' }}
+    value: ${{ steps.set-outputs.outputs.wf_artifact_token }}
     description: "Workflow artifact token"
   wf_artifact_component_id:
-    value: ${{ steps.plan.outputs.wf_artifact_component_id || '' }}
+    value: ${{ steps.set-outputs.outputs.wf_artifact_component_id }}
     description: "Workflow artifact component id"
   wfartifact-inventory:
     value: ${{ steps.plan.outputs.wfartifact-inventory}}
@@ -79,3 +79,15 @@ runs:
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
         INPUT_PLUGIN_LIST: 'github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gosec,njsscan,gitleaks,checkov,sonar,wfartifact-inventory,wfartifact-decorator,trivy,findsecbugs,syft,grype'
+    
+    - name: Set outputs conditionally
+      uses: docker://alpine:3.18
+      id: set-outputs
+      run: |
+        if [ -n "${{ steps.plan.outputs.wf_artifact_token || '' }}" ]; then
+          echo "${{ steps.plan.outputs.wf_artifact_token }}" > "$CLOUDBEES_OUTPUTS/wf_artifact_token"
+        fi
+        if [ -n "${{ steps.plan.outputs.wf_artifact_component_id || '' }}" ]; then
+           echo "${{ steps.plan.outputs.wf_artifact_component_id }}" > "$CLOUDBEES_OUTPUTS/wf_artifact_component_id"
+        fi
+      shell: bash
