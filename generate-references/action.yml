@@ -9,7 +9,7 @@ runs:
       uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/assets-plugin-chain-utils:c7cbcb9a27d7f75effc0237ae78a96192402d81b
       with:
           entrypoint: assets-plugin-chain-utils
-          args: generate-references --asset-type "CODE"
+          args: generate-references --asset-type ${{ inputs.asset_type }}
       env:
           INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
           INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
