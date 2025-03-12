@@ -1,0 +1,35 @@
+name: Update v1 Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-tag:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Set up Git
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+    - name: Update v1 tag
+      run: |
+        git tag -f v1
+        git push origin -f v1
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      with:
+        tag_name: v1
+        release_name: Release v1
+        draft: false
+        prerelease: false
+        generate_release_notes: true
