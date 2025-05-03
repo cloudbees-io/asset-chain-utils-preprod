@@ -17,12 +17,15 @@ inputs:
   file-name:
     description: "File name to upload. If not provided, the file name will be the same as the file path"
     required: false
+  alias:
+    description: "Alias for the artifact"
+    required: false
 
 runs:
   using: composite
   steps:
     - name: Upload artifact using action
-      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/assets-plugin-chain-utils:latest
+      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/assets-plugin-chain-utils:48edde1786b3d4d3fc4bd33d42c3d6cf34e76a73
       with:
         entrypoint: assets-plugin-chain-utils
         args: upload-binary
@@ -35,4 +38,5 @@ runs:
         INPUT_DEBUG: ${{ inputs.debug }}
         INPUT_FILE_TYPE: ${{ inputs.file-type }}
         INPUT_FILE_NAME: ${{ inputs.file-name }}
+        INPUT_ALIAS: ${{ inputs.alias }}
         MAX_FILE_SIZE: "2147483648"
