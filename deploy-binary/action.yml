@@ -1,0 +1,34 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: deploy-binary
+description: "deploy artifact api"
+
+inputs:
+  repository_location:
+    description: "The full location URL where the binary image is stored"
+    required: true
+  environment_id:
+    description: "The environment id which needs the mapping"
+    required: true
+  application_id:
+    description: "The application id which needs the mapping"
+    required: true
+  organisation_id:
+    description: "The organisation id which needs the mapping"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Deploy artifact event using action
+      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/assets-plugin-chain-utils:latest
+      with:
+        entrypoint: assets-plugin-chain-utils
+        args: deploy-binary
+      env:
+        INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
+        INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
+        INPUT_REPOSITORY_LOCATION: ${{ inputs.repository_location }}
+        INPUT_ENVIRONMENT_ID: ${{ inputs.environment_id }}
+        INPUT_APPLICATION_ID: ${{ inputs.application_id }}
+        INPUT_ORGANISATION_ID: ${{ inputs.organisation_id }}
