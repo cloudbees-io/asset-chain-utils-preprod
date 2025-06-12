@@ -38,6 +38,12 @@ outputs:
   sonar:
     value: ${{ steps.plan.outputs.sonar}}
     description: "SonarQube Scanner"
+  blackduck-props:
+    value: ${{ steps.plan.outputs.blackduck-props}}
+    description: "BlackDuck"
+  blackduck:
+    value: ${{ steps.plan.outputs.blackduck}}
+    description: "BlackDuck Scanner"
   checkov:
     value: ${{ steps.plan.outputs.checkov}}
     description: "Checkov"
@@ -81,4 +87,4 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype'
+        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props'
