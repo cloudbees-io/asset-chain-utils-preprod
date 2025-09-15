@@ -26,6 +26,12 @@ outputs:
   gerrit-decorator:
     value: ${{ steps.plan.outputs.gerrit-decorator}}
     description: "Gerrit decorator"
+  gitlab-inventory:
+    value: ${{ steps.plan.outputs.gitlab-inventory}}
+    description: "Gitlab inventory"
+  gitlab-decorator:
+    value: ${{ steps.plan.outputs.gitlab-decorator}}
+    description: "Gitlab decorator"
   scc:
     value: ${{ steps.plan.outputs.scc}}
     description: "SCC Scanner"
@@ -111,4 +117,4 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,ecr_role_arn,ecr_region_name,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props,coverity,coverity-props,ecr-inventory,ecr-metadata'
+        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,ecr_role_arn,ecr_region_name,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gitlab-inventory,gitlab-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props,coverity,coverity-props,ecr-inventory,ecr-metadata'
