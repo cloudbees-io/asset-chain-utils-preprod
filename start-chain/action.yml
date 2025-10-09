@@ -71,6 +71,12 @@ outputs:
   klocwork:
     value: ${{ steps.plan.outputs.klocwork}}
     description: "Klocwork Scanner"
+  snyk-sast-props:
+    value: ${{ steps.plan.outputs.snyk-sast-props}}
+    description: "Snyk SAST"
+  snyk-sast:
+    value: ${{ steps.plan.outputs.snyk-sast}}
+    description: "Snyk SAST Scanner"
   
   #Binary Scan related Outputs
   wf_artifact_token:
@@ -132,4 +138,4 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,ecr_role_arn,ecr_region_name,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gitlab-inventory,gitlab-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props,coverity,coverity-props,klocwork,klocwork-props,ecr-inventory,ecr-metadata,jfrog-inventory,jfrog-metadata,jfrog_token'
+        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,ecr_role_arn,ecr_region_name,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gitlab-inventory,gitlab-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props,coverity,coverity-props,klocwork,klocwork-props,snyk-sast,snyk-sast-props,ecr-inventory,ecr-metadata,jfrog-inventory,jfrog-metadata,jfrog_token'
