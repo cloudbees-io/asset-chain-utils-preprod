@@ -65,12 +65,12 @@ outputs:
   checkov:
     value: ${{ steps.plan.outputs.checkov}}
     description: "Checkov"
-  klocwork-props:
-    value: ${{ steps.plan.outputs.klocwork-props}}
-    description: "Klocwork"
-  klocwork:
-    value: ${{ steps.plan.outputs.klocwork}}
-    description: "Klocwork Scanner"
+  perforce-klocwork-sast-props:
+    value: ${{ steps.plan.outputs.perforce-klocwork-sast-props}}
+    description: "Perforce Klocwork"
+  perforce-klocwork-sast:
+    value: ${{ steps.plan.outputs.perforce-klocwork-sast}}
+    description: "Perforce Klocwork Scanner"
   snykcode-props:
     value: ${{ steps.plan.outputs.snykcode-props}}
     description: "Snyk SAST"
@@ -138,5 +138,5 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,ecr_role_arn,ecr_region_name,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gitlab-inventory,gitlab-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props,coverity,coverity-props,klocwork,klocwork-props,snykcode,snykcode-props,ecr-inventory,ecr-metadata,jfrog-inventory,jfrog-metadata,jfrog_token'
+        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,ecr_role_arn,ecr_region_name,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gitlab-inventory,gitlab-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props,coverity,coverity-props,perforce-klocwork-sast,perforce-klocwork-sast-props,snykcode,snykcode-props,ecr-inventory,ecr-metadata,jfrog-inventory,jfrog-metadata,jfrog_token'
         INPUT_TIMEOUT: "180" # 3 minutes
