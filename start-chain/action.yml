@@ -79,10 +79,10 @@ outputs:
     description: "Snyk SAST Scanner"
   snyk-iac-props:
     value: ${{ steps.plan.outputs.snyk-iac-props}}
-    description: "Snyk IAC"
+    description: "Snyk IaC"
   snyk-iac:
     value: ${{ steps.plan.outputs.snyk-iac}}
-    description: "Snyk IAC Scanner"
+    description: "Snyk IaC Scanner"
   
   #Binary Scan related Outputs
   wf_artifact_token:
