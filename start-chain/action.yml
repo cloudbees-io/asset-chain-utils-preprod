@@ -83,6 +83,12 @@ outputs:
   snyk-iac:
     value: ${{ steps.plan.outputs.snyk-iac}}
     description: "Snyk IaC Scanner"
+  snyksca-props:
+    value: ${{ steps.plan.outputs.snyksca-props}}
+    description: "Snyk SCA"
+  snyksca:
+    value: ${{ steps.plan.outputs.snyksca}}
+    description: "Snyk SCA Scanner"
   
   #Binary Scan related Outputs
   wf_artifact_token:
@@ -144,5 +150,5 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,ecr_role_arn,ecr_region_name,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gitlab-inventory,gitlab-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props,coverity,coverity-props,perforce-klocwork-sast,perforce-klocwork-sast-props,snykcode,snykcode-props,snyk-iac,snyk-iac-props,ecr-inventory,ecr-metadata,jfrog-inventory,jfrog-metadata,jfrog_token'
+        INPUT_INIT_OUTPUTS: 'wf_artifact_component_id,wf_artifact_token,ecr_role_arn,ecr_region_name,account_credentials,github-inventory,github-decorator,scc,bitbucket-inventory,bitbucket-decorator,gerrit-inventory,gerrit-decorator,gitlab-inventory,gitlab-decorator,gosec,njsscan,gitleaks,checkov,sonar-props,wfartifact-inventory,wfartifact-decorator,trivy,sonar,findsecbugs,syft,grype,blackduck,blackduck-props,coverity,coverity-props,perforce-klocwork-sast,perforce-klocwork-sast-props,snykcode,snykcode-props,snyk-iac,snyk-iac-props,snyksca,snyksca-props,ecr-inventory,ecr-metadata,jfrog-inventory,jfrog-metadata,jfrog_token'
         INPUT_TIMEOUT: "300" # 5 minutes
