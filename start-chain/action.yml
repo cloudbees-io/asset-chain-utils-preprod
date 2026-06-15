@@ -149,6 +149,10 @@ outputs:
     value: ${{ steps.plan.outputs.grype}}
     description: "Grype"
 
+  EDGE_REDACTION_STRIP_BASEDATA:
+    value: ${{ steps.plan.outputs.EDGE_REDACTION_STRIP_BASEDATA }}
+    description: "Strip BaseData (raw source) from code-scanner findings on edge"
+
 runs:
   using: composite
   steps:
