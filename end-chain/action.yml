@@ -7,6 +7,9 @@ inputs:
   edge-redaction-strip-basedata:
     description: "When 'true', strip BaseData (raw source) from code-scanner findings before posting. Set by the workflow from start-chain's output on edge-routed scans; empty on cloud scans."
     default: ""
+  edge-redaction-sweep-sarif:
+    description: "When 'true', strip source snippets from any .sarif file in the workspace before posting. Set by the workflow from start-chain's output on edge-routed scans; empty on cloud scans."
+    default: ""
 
 runs:
   using: composite
@@ -25,3 +28,4 @@ runs:
         # empty on cloud scans (no redaction). Passed in by the workflow from
         # start-chain's output.
         EDGE_REDACTION_STRIP_BASEDATA: ${{ inputs.edge-redaction-strip-basedata }}
+        EDGE_REDACTION_SWEEP_SARIF: ${{ inputs.edge-redaction-sweep-sarif }}
