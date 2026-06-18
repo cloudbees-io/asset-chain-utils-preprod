@@ -24,8 +24,8 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        # Edge redaction (CBP-46171). Read directly via os.Getenv in process-outputs;
-        # empty on cloud scans (no redaction). Passed in by the workflow from
-        # start-chain's output.
+        # Edge redaction (CBP-46171 basedata, CBP-46177 SARIF sweep). Read directly
+        # via os.Getenv in process-outputs; empty on cloud scans (no redaction).
+        # Passed in by the workflow from start-chain's outputs.
         EDGE_REDACTION_STRIP_BASEDATA: ${{ inputs.edge-redaction-strip-basedata }}
         EDGE_REDACTION_SWEEP_SARIF: ${{ inputs.edge-redaction-sweep-sarif }}
