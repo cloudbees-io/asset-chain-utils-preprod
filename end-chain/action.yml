@@ -11,7 +11,7 @@ inputs:
     description: "When 'true', strip source snippets from any .sarif file in the workspace before posting. Set by the workflow from start-chain's output on edge-routed scans; empty on cloud scans."
     default: ""
   edge-redaction-suppress-code-scanner-logs:
-    description: "When 'true', the runtime suppressed code-scanner logs on this edge scan; end-chain prints an on-premise-retention notice in the job log. Set by the workflow from start-chain's output on edge-routed scans; empty on cloud scans."
+    description: "When 'true', the runtime suppressed code-scanner logs on this edge scan; end-chain prints an on-premise retention notice in the job log. Set by the workflow from start-chain's output on edge-routed scans; empty on cloud scans."
     default: ""
 
 runs:
