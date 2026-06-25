@@ -10,6 +10,9 @@ inputs:
   edge-redaction-sweep-sarif:
     description: "When 'true', strip source snippets from any .sarif file in the workspace before posting. Set by the workflow from start-chain's output on edge-routed scans; empty on cloud scans."
     default: ""
+  edge-redaction-suppress-code-scanner-logs:
+    description: "When 'true', the runtime suppressed code-scanner logs on this edge scan; end-chain prints an on-premise retention notice in the job log. Set by the workflow from start-chain's output on edge-routed scans; empty on cloud scans."
+    default: ""
 
 runs:
   using: composite
@@ -24,8 +27,9 @@ runs:
         INPUT_CLOUDBEES_API_TOKEN: ${{ cloudbees.api.token }}
         INPUT_CLOUDBEES_API_URL: ${{ cloudbees.api.url }}
         INPUT_RUN_ID: ${{ cloudbees.run_id }}
-        # Edge redaction (CBP-46171 basedata, CBP-46177 SARIF sweep). Read directly
-        # via os.Getenv in process-outputs; empty on cloud scans (no redaction).
-        # Passed in by the workflow from start-chain's outputs.
+        # Edge redaction (CBP-46171 basedata, CBP-46177 SARIF sweep, CBP-46178 log
+        # notice). Read directly via os.Getenv in process-outputs; empty on cloud
+        # scans (no redaction). Passed in by the workflow from start-chain's outputs.
         EDGE_REDACTION_STRIP_BASEDATA: ${{ inputs.edge-redaction-strip-basedata }}
         EDGE_REDACTION_SWEEP_SARIF: ${{ inputs.edge-redaction-sweep-sarif }}
+        EDGE_REDACTION_SUPPRESS_CODE_SCANNER_LOGS: ${{ inputs.edge-redaction-suppress-code-scanner-logs }}
