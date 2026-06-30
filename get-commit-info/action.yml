@@ -16,7 +16,7 @@ runs:
   using: composite
   steps:
     - name: Generate sha and ref 
-      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/assets-plugin-chain-utils:c7cbcb9a27d7f75effc0237ae78a96192402d81b
+      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/assets-plugin-chain-utils:latest
       with:
         entrypoint: assets-plugin-chain-utils
         args: get-commit-info
